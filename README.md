@@ -1,11 +1,6 @@
 # pytest-report
 
 ```markdown
-# pytestreport-md
-
-[![PyPI Version](https://img.shields.io/pypi/v/pytestreport-md.svg)](https://pypi.org/project/pytestreport-md/)
-[![License](https://img.shields.io/pypi/l/pytestreport-md.svg)](https://opensource.org/licenses/MIT)
-
 Uma biblioteca para gerar relatórios de testes com emojis de maneira simples e estilizada!
 
 ## 🚀 Instalação

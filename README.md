@@ -39,7 +39,7 @@ generate_report_pytest(prefix="You test with pytest", test_results=test_results,
 Um arquivo `report.md` será gerado com um relatório detalhado:
 
 ```
-## Test Report - `platform-bs-users`
+## Test Report - `Name project`
 
 --------------------------------------------------
 ### 📝 Test results
@@ -62,13 +62,14 @@ Um arquivo `report.md` será gerado com um relatório detalhado:
 - **Failed Tests**: 1 ❌
 
 ---
-_Report styled with ❤️ for `platform-bs-users` on 01-Jan-2025 at 10:00:00_
+_Report styled with ❤️ for `Name project` on 01-Jan-2025 at 10:00:00_
 ```
 
 ## ⚙️ Configuração Adicional
 
 Se necessário, você pode personalizar o comportamento da função `generate_report_pytest`:
 
+- **`prefix`**: Colocar o nome do projeto que você está utilizando no relatório de teste.
 - **`test_results`**: Resultados dos testes no formato `<nome do teste> - <status>`, separados por `|`.
 - **`output_path`**: Caminho para salvar o relatório Markdown (por padrão, `report.md` será criado no diretório atual).
 

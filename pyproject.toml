@@ -3,8 +3,8 @@ requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "pytestreport-h10"
-version = "0.1.0"
+name = "pytestreport-md"
+version = "0.1.1"
 description = "Uma biblioteca para gerar relatórios de teste com emojis"
 authors = [
     {name = "Hedris Pereira", email = "hedrisgts@gmail.com"}

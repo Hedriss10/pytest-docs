@@ -31,7 +31,7 @@ test_results = """
 TestExample1 - PASSED | TestExample2 - FAILED | TestExample3 - PASSED
 """
 
-generate_report_pytest(prefix="You test with pytest", test_results=test_results, output_path="report.md")
+generate_report_pytest(prefix="Name project", test_results=test_results, output_path="report.md")
 ```
 
 ### Resultado

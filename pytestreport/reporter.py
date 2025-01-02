@@ -1,9 +1,9 @@
-from datetime import datetime
-
+import os
 import sys
 from datetime import datetime
 
 def generate_report_pytest(prefix, test_results, coverage_report):
+    """Generates a test and code coverage report."""
     emoji_map = {
         "PASSED": "✅",
         "FAILED": "❌",
@@ -13,15 +13,23 @@ def generate_report_pytest(prefix, test_results, coverage_report):
     failed_tests = []
     coverage_data = ""
 
+    if not os.path.exists(coverage_report):
+        raise FileNotFoundError(f"Coverage file '{coverage_report}' not found!")
+
     with open(coverage_report, "r") as f:
         coverage_data = f.read()
 
-    for result in test_results.split(" | "):
-        name, status = result.split(" - ")
-        if status == "PASSED":
-            passed_tests.append(name)
-        elif status == "FAILED":
-            failed_tests.append(name)
+    try:
+        for result in test_results.split(" | "):
+            name, status = result.split(" - ")
+            if status == "PASSED":
+                passed_tests.append(name)
+            elif status == "FAILED":
+                failed_tests.append(name)
+            else:
+                raise ValueError(f"Unknown test status: {status}")
+    except Exception as e:
+        raise ValueError(f"Error processing test results: {e}")
 
     report_title = f"## Test Report - `{prefix}`\n"
     report_results = (
@@ -50,14 +58,24 @@ def generate_report_pytest(prefix, test_results, coverage_report):
         f"- **Failed Tests**: {len(failed_tests)} ❌\n"
     )
 
-    footer = f"\n---\n_Report styled with ❤️ for `{prefix}` on {datetime.now().strftime('%d-%b-%Y at %H:%M:%S')}_\n"
+    footer = f"\n---\n_Report generated with ❤️ for `{prefix}` on {datetime.now().strftime('%d-%b-%Y at %H:%M:%S')}_\n"
 
     final_report = report_title + report_summary + footer
 
-    with open("report.md", "w") as file:
+    output_file = f"{prefix}_report.md"
+    with open(output_file, "w") as file:
         file.write(final_report)
 
-if __name__ == "__main__":
-    test_results = sys.argv[1]
-    generate_report_pytest(test_results, "coverage_report.txt")
+    print(f"Report successfully generated: {output_file}")
 
+
+if __name__ == "__main__":
+    if len(sys.argv) < 3:
+        print("Usage: python generate_report.py <prefix> <test_results> <coverage_report>")
+        sys.exit(1)
+
+    prefix = sys.argv[1]
+    test_results = sys.argv[2]
+    coverage_report = sys.argv[3]
+
+    generate_report_pytest(prefix, test_results, coverage_report)

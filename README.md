@@ -12,7 +12,7 @@ Uma biblioteca para gerar relatórios de testes com emojis de maneira simples e 
 
 Você pode instalar o `pytestreport-md` diretamente do PyPI usando o pip:
 
-```bash
+# bash
 pip install pytestreport-md
 ```
 
